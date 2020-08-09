@@ -1,11 +1,59 @@
 import React from 'react';
-import { GithubContext } from '../context/context';
+import { gitHubContext } from '../context/context';
 import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
 const UserInfo = () => {
-  return <h2>user info component</h2>;
+
+  const { mockUser } = React.useContext(gitHubContext);
+  const { public_repos, followers, following, public_gists } = mockUser;
+  const items = [{
+    id: '1',
+    icon: <GoRepo className='icon'></GoRepo>,
+    number: public_repos,
+    color: 'pink',
+    type:'Repos'
+  }, {
+    id: '2',
+    icon: <FiUsers className='icon'></FiUsers>,
+    number: followers,
+    color: 'green',
+    type:'Followers'
+  },{
+    id: '3',
+    icon: <FiUserPlus className='icon'></FiUserPlus>,
+    number: following,
+    color: 'purple',
+    type:'Following'
+    
+  },{
+    id: '4',
+    icon: <GoGist className='icon'></GoGist>,
+    number: public_gists,
+    color: 'yellow',
+    type:'Gists'
+    }]
+  const Item = ({icon, number, color,type }) => {
+    return <article className='item'>
+        <span className={color}>
+        {icon}
+        </span>
+        <div>
+        <h3>{number}</h3>
+          <p>{type} </p>
+          </div>
+  
+    </article>
+  }
+
+  return <Wrapper className='section-center'>
+    {items.map((i) => {
+      return <Item key={i.id} {...i} />
+    })
+    }
+  </Wrapper>
+
 };
 
 const Wrapper = styled.section`
