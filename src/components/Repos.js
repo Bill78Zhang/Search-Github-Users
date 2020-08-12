@@ -1,9 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GithubContext } from '../context/context';
+import { gitHubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
-  return <h2>repos component</h2>;
+
+  const { mockRepos: repos } = React.useContext(gitHubContext);
+  const data = repos.reduce((total, item) => {
+    const { language } = item;
+    if (!language) {
+      return total;
+    }
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 }
+    }
+    else {
+      total[language] = { ...total[language], value: total[language].value + 1 };
+    }
+    return total;
+  },{})
+
+  const languages = Object.values(data).sort((a, b) => {
+    return b.value - a.value;
+  }).slice(0, 5);
+
+  console.log(languages);
+ 
+  return <section className='section'>
+    <Pie3D data={languages}/>
+  </section>;
 };
 
 const Wrapper = styled.div`
@@ -27,7 +51,7 @@ const Wrapper = styled.div`
   svg {
     width: 100% !important;
     border-radius: var(--radius) !important;
-  }
-`;
+  };
+`
 
 export default Repos;

@@ -19,15 +19,13 @@ const Followers = () => {
           <h4>{login}</h4>
           <a href={html_url}>{html_url}</a>
         </div>
-
       </article>
-      
-        
+          
     })}
 
-    </div>;
+    </div>
     </Wrapper>
-  )
+  ) 
 };
 
 const Wrapper = styled.article`
