@@ -17,16 +17,37 @@ const Repos = () => {
       total[language] = { ...total[language], value: total[language].value + 1 };
     }
     return total;
-  },{})
+  }, {})
 
   const languages = Object.values(data).sort((a, b) => {
     return b.value - a.value;
   }).slice(0, 5);
 
-  console.log(languages);
+  let stars = repos.reduce((total, item) => {
+    const { language, stargazers_count: number } = item;
+    if (!language) {
+      return total;
+    }
+    if (!total[language]) {
+      total[language] = { label: language, value: number }
+    }
+    else {
+      total[language] = { ...total[language], value: total[language].value + number };
+    }
+    return total;
+
+  }, {})
+  
+  stars = Object.values(stars).sort((a, b) => {
+    return b.value - a.value;
+  }).slice(0, 5);
  
   return <section className='section'>
-    <Pie3D data={languages}/>
+    <Wrapper className='section-center'>
+      <Pie3D data={languages} />
+      <Column3D/>
+      <Doughnut2D data={stars}/>
+      </Wrapper>
   </section>;
 };
 

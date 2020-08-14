@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import Card from './Card';
 import Followers from './Followers';
 const User = () => {
-  return <Wrapper>
+  return (
+    <section className='section'>
+    <Wrapper className='section-center'>
     <Card />
     <Followers/>
-  </Wrapper>;
+      </Wrapper>
+      </section>
+  )
+
 };
 
 const Wrapper = styled.div`

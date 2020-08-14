@@ -47,13 +47,14 @@ const UserInfo = () => {
     </article>
   }
 
-  return <Wrapper className='section-center'>
+  return (
+    <section className='section'>
+    <Wrapper className='section-center'>
     {items.map((i) => {
       return <Item key={i.id} {...i} />
-    })
-    }
-  </Wrapper>
-
+    })}
+    </Wrapper>
+  </section>)
 };
 
 const Wrapper = styled.section`

@@ -8,7 +8,7 @@ const Card = () => {
 
   const { avatar_url, html_url, name, company, blog, bio, location,twitter_username } = mockUser;
   
-  return <Wrapper className = 'section-center'>
+  return <Wrapper>
     <header>
       <img src={avatar_url} alt={name} />
       <div>
