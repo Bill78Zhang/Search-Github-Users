@@ -18,15 +18,13 @@ const Navbar = () => {
       {isUser && user.name && (
         <h4>
           Welcome,
-          <strong> {user.name}</strong>
+          <strong> {user.name.toUpperCase()}</strong>
         </h4>
       )}
-      {isUser ? (
+      {isUser && (
         <button onClick={() => logout({ returnTo: window.location.origin })}>
           Logout
         </button>
-      ) : (
-        <button onClick={loginWithRedirect}>Login</button>
       )}
     </Wrapper>
   );
