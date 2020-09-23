@@ -2,9 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 const Error = () => {
-  return <Wrapper>
-    <h2>Sorry, we can not find the page</h2>
-  </Wrapper>;
+  return (
+    <Wrapper>
+      <h1>404</h1>
+      <Link to='/'>
+        <button className='btn'>Back To Home</button>
+      </Link>
+    </Wrapper>
+  );
 };
 const Wrapper = styled.section`
   min-height: 100vh;

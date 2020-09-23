@@ -14,9 +14,9 @@ const GitHubProvider = ({ children }) => {
   const [error, setError] = useState({ status: false, msg: '' });
   const [loading, setLoading] = useState(false);
 
-  const [user, setUser] = useState({});
-  const [repos, setRepos] = useState([]);
-  const [followers, setFollowers] = useState([]);
+  const [user, setUser] = useState(mockUser);
+  const [repos, setRepos] = useState(mockRepos);
+  const [followers, setFollowers] = useState(mockFollowers);
 
   const searchUser = async user => {
     toggleErrors(false, '');
