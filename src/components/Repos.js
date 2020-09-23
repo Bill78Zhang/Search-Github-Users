@@ -4,7 +4,7 @@ import { gitHubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
 
-  const { mockRepos: repos } = React.useContext(gitHubContext);
+  const { repos } = React.useContext(gitHubContext);
   const data = repos.reduce((total, item) => {
     const { language } = item;
     if (!language) {

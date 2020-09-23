@@ -6,8 +6,8 @@ import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
 const UserInfo = () => {
 
-  const { mockUser } = React.useContext(gitHubContext);
-  const { public_repos, followers, following, public_gists } = mockUser;
+  const { user} = React.useContext(gitHubContext);
+  const { public_repos, followers, following, public_gists } = user;
   const items = [{
     id: '1',
     icon: <GoRepo className='icon'></GoRepo>,

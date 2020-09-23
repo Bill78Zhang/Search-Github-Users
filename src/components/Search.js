@@ -7,18 +7,23 @@ const Search = () => {
   const [value, setValue] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
+    searchUser(value);
   }
   
+  const { requests, error,searchUser } = React.useContext(gitHubContext);
   return <section className='section'>
     <Wrapper className='section-center'>
+      <ErrorWrapper>
+        {error.status && <p> {error.msg}</p>}
+      </ErrorWrapper>
       <form onSubmit={handleSubmit}>
         <div className='form-control'>
           <MdSearch />
           <input placeholder='Enter User Name' value={value} onChange={(e)=> setValue(e.target.value) }></input>
-          <button>Search</button>
+          <button type='submit'>Search</button>
         </div>
       </form>
-      <h3>Requets:60/60</h3>
+      <h3>Requets:{requests}/60</h3>
     </Wrapper>
   </section>;
 };

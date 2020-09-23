@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 const Card = () => {
 
-  const { mockUser } = React.useContext(gitHubContext);
+  const { user } = React.useContext(gitHubContext);
 
-  const { avatar_url, html_url, name, company, blog, bio, location,twitter_username } = mockUser;
+  const { avatar_url, html_url, name, company, blog, bio, location,twitter_username } = user;
   
   return <Wrapper>
     <header>

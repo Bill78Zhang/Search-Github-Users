@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 const Followers = () => {
 
-  const { mockFollowers } = React.useContext(gitHubContext);
+  const { followers } = React.useContext(gitHubContext);
 
   
   return(
   <Wrapper>
   <div className='followers'>
 
-    {mockFollowers.map((follower, index) => {
+    {followers.map((follower, index) => {
       const { avatar_url: img, html_url, login } = follower;
       return <article key={index}>
         <img src={img} alt={login} />
